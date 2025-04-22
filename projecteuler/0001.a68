@@ -1,0 +1,15 @@
+BEGIN
+   PRIO DIVBY = 6;
+   OP DIVBY = (INT a, b) BOOL: a MOD b = 0;
+
+   PROC is multiple = (INT n) BOOL: n DIVBY 3 OR n DIVBY 5;
+
+   PROC sum if = (INT lo, hi, PROC(INT)BOOL pred) INT:
+   (
+      INT total := 0;
+      FOR i FROM lo TO hi DO total +:= (pred(i) | i | 0) OD;
+      total
+   );
+
+   print (("Answer: ", whole(sum if(1, 999, is multiple), 0), new line))
+END
