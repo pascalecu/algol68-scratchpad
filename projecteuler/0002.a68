@@ -1,0 +1,10 @@
+BEGIN
+   INT sum := 0, a := 1, b := 2;
+
+   WHILE b < 4000000 DO
+      IF b MOD 2 = 0 THEN sum +:= b FI;
+      a := b; b := a + b
+   OD;
+
+   print (("Answer: ", whole(sum, 0), new line))
+END
