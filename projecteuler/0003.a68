@@ -1,0 +1,22 @@
+BEGIN
+   INT num := 600851475143;
+   INT factor := 2;
+   INT largest prime := factor;
+
+   OP /:= = (REF INT a, INT b) VOID: a := a OVER b;
+
+   WHILE num MOD 2 = 0 DO num /:= factor OD;
+
+   factor +:= 1;
+   WHILE factor * factor <= num DO
+      WHILE num MOD factor = 0 DO
+         num /:= factor;
+         largest prime := factor
+      OD;
+      factor +:= 2
+   OD;
+
+   IF num > 1 THEN largest prime := num FI;
+
+   print(("Largest prime factor: ", whole(largest prime, 0), new line))
+END
