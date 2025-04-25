@@ -1,0 +1,37 @@
+PROC main = VOID: (
+   PROC is prime = (INT num) BOOL:
+   BEGIN
+      BOOL result := TRUE;
+
+      IF num = 2 OR num = 3 THEN exit FI;
+      IF num < 2 THEN result := FALSE; exit FI;
+      IF num MOD 2 = 0 OR num MOD 3 = 0 THEN
+         result := FALSE; exit
+      FI;
+
+      INT limit = ENTIER sqrt(num);
+
+      FOR i FROM 1 TO (limit + 1) OVER 6 DO
+         IF num MOD (6*i - 1) = 0 OR
+            num MOD (6*i + 1) = 0
+         THEN
+            result := FALSE; exit
+         FI
+      OD;
+
+      exit: result
+   END;
+
+   INT count := 3; # 2, 3, 5 #
+   INT prime;
+   FOR i FROM 7 BY 2 WHILE count <= 10000 DO
+      IF is prime(i) THEN
+         count +:= 1;
+         prime := i
+      FI
+   OD;
+
+   print((whole(prime, 0), newline))
+);
+
+main
