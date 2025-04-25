@@ -1,0 +1,22 @@
+BEGIN
+   PROC gcd = (LONG INT m, n)LONG INT:
+   BEGIN
+      LONG INT a := m, b := n, c;
+      WHILE b /= 0 DO
+         c := a;
+         a := b;
+         b := c MOD b
+      OD;
+      ABS (a)
+   END;
+
+   PROC lcm = (LONG INT a, b)LONG INT: ABS(a) OVER gcd(a, b) * ABS(b);
+
+   LONG INT result := 1;
+
+   FOR i FROM 2 TO 20 DO
+      result := lcm(result, i)
+   OD;
+
+   print((whole(result, 0), newline))
+END
