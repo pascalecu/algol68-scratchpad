@@ -1,0 +1,28 @@
+PROC is palindrome = (LONG INT n)BOOL:
+BEGIN
+   LONG INT temp := n;
+   LONG INT reversed := 0;
+   WHILE temp > 0 DO
+      reversed *:= 10;
+      reversed +:= temp %* 10;
+      temp %:= 10
+   OD;
+   reversed = n
+END;
+
+BEGIN
+   LONG INT result := 0;
+   BOOL found := FALSE;
+
+   FOR i FROM 998 * 2 DOWNTO 100 * 2 WHILE NOT found DO
+      INT start j := (i + 1) % 2;
+      FOR j FROM 999 DOWNTO start j WHILE NOT found DO
+         LONG INT product := (i - j) * j;
+         IF is palindrome(product) THEN
+            found := TRUE;
+            result := product;
+            print((whole(i - j, 0), " * ", whole(j, 0), " = ", whole(result, 0), newline))
+         FI
+      OD # FOR j #
+   OD # FOR i #
+END
