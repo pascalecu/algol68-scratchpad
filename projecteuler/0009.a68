@@ -1,0 +1,10 @@
+PROC main = VOID: (
+   FOR a FROM 1 TO 1000 DO
+      FOR b FROM a TO 500 - a % 2 DO
+         INT c := 1000 - a - b;
+         IF a^2 + b^2 = c^2 THEN print((whole(a*b*c, 0), newline)) FI
+      OD
+   OD
+);
+
+main
