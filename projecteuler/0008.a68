@@ -33,9 +33,7 @@ PROC main = VOID: (
 
    FOR j FROM 1 TO 13
    DO
-      INT digit := DIGIT number[j];
-
-      IF digit = 0
+      IF INT digit := DIGIT number[j]; digit = 0
       THEN
          INC count of zeroes
       ELSE
@@ -50,16 +48,14 @@ PROC main = VOID: (
 
    FOR i FROM 2 TO length - 13 + 1
    DO
-      INT old digit := DIGIT number[i - 1];
-      IF old digit = 0
+      IF INT old digit := DIGIT number[i - 1]; old digit = 0
       THEN
          DEC count of zeroes
       ELSE
          current product %:= old digit
       FI;
 
-      INT new digit := DIGIT number[i + 13 - 1];
-      IF new digit = 0
+      IF INT new digit := DIGIT number[i + 13 - 1]; new digit = 0
       THEN
          INC count of zeroes
       ELSE
